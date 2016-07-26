@@ -43,7 +43,7 @@ Pod::Spec.new do |s|
     "pjsua-arm-apple-darwin9",
     "resample-arm-apple-darwin9",
     "speex-arm-apple-darwin9",
-    "libsrtp-arm-apple-darwin9"
+    "srtp-arm-apple-darwin9"
 
   s.requires_arc = true
 

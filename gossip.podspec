@@ -25,25 +25,25 @@ Pod::Spec.new do |s|
   # s.library   = 'iconv'
   # s.libraries = 'iconv', 'xml2'
   s.libraries =
-    "libg7221codec-arm-apple-darwin9.a",
-    "libgsmcodec-arm-apple-darwin9.a",
-    "libilbccodec-arm-apple-darwin9.a",
-    "libmilenage-arm-apple-darwin9.a",
-    "libpj-arm-apple-darwin9.a",
-    "libpjlib-util-arm-apple-darwin9.a",
-    "libpjmedia-arm-apple-darwin9.a",
-    "libpjmedia-audiodev-arm-apple-darwin9.a",
-    "libpjmedia-codec-arm-apple-darwin9.a",
-    "libpjmedia-videodev-arm-apple-darwin9.a",
-    "libpjnath-arm-apple-darwin9.a",
-    "libpjsdp-arm-apple-darwin9.a",
-    "libpjsip-arm-apple-darwin9.a",
-    "libpjsip-simple-arm-apple-darwin9.a",
-    "libpjsip-ua-arm-apple-darwin9.a",
-    "libpjsua-arm-apple-darwin9.a",
-    "libresample-arm-apple-darwin9.a",
-    "libspeex-arm-apple-darwin9.a",
-    "libsrtp-arm-apple-darwin9.a"
+    "g7221codec-arm-apple-darwin9",
+    "gsmcodec-arm-apple-darwin9",
+    "ilbccodec-arm-apple-darwin9",
+    "milenage-arm-apple-darwin9",
+    "pj-arm-apple-darwin9",
+    "pjlib-util-arm-apple-darwin9",
+    "pjmedia-arm-apple-darwin9",
+    "pjmedia-audiodev-arm-apple-darwin9",
+    "pjmedia-codec-arm-apple-darwin9",
+    "pjmedia-videodev-arm-apple-darwin9",
+    "pjnath-arm-apple-darwin9",
+    "pjsdp-arm-apple-darwin9",
+    "pjsip-arm-apple-darwin9",
+    "pjsip-simple-arm-apple-darwin9",
+    "pjsip-ua-arm-apple-darwin9",
+    "pjsua-arm-apple-darwin9",
+    "resample-arm-apple-darwin9",
+    "speex-arm-apple-darwin9",
+    "libsrtp-arm-apple-darwin9"
 
   s.requires_arc = true
 

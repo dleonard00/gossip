@@ -45,7 +45,7 @@ typedef enum {
 /// Initialize a new call with the specified account.
 /** Do not initialize a GSCall instance directly, instead use one of the provided static methods.
  *  This method is only inteded to be used by child classes. */
-- (id)initWithAccount:(GSAccount *)account;
+- (instancetype)initWithAccount:(GSAccount *)account;
 
 - (BOOL)setVolume:(float)volume; ///< Sets the call volume. Returns YES if successful.
 - (BOOL)setMicVolume:(float)volume; ///< Sets the microphone volume. Returns YES if successful.

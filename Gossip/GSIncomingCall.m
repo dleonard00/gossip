@@ -13,7 +13,7 @@
 
 @implementation GSIncomingCall
 
-- (id)initWithCallId:(int)callId toAccount:(GSAccount *)account {
+- (instancetype)initWithCallId:(int)callId toAccount:(GSAccount *)account {
     if (self = [super initWithAccount:account]) {
         [self setCallId:callId];
     }

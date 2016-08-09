@@ -15,7 +15,7 @@
 
 @synthesize remoteUri = _remoteUri;
 
-- (id)initWithRemoteUri:(NSString *)remoteUri fromAccount:(GSAccount *)account {
+- (instancetype)initWithRemoteUri:(NSString *)remoteUri fromAccount:(GSAccount *)account {
     if (self = [super initWithAccount:account]) {
         _remoteUri = [remoteUri copy];
     }

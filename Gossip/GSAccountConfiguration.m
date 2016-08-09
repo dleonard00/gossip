@@ -10,11 +10,11 @@
 
 @implementation GSAccountConfiguration
 
-+ (id)defaultConfiguration {
++ (instancetype)defaultConfiguration {
     return [[self alloc] init];
 }
 
-+ (id)configurationWithConfiguration:(GSAccountConfiguration *)configuration {
++ (instancetype)configurationWithConfiguration:(GSAccountConfiguration *)configuration {
     return [configuration copy];
 }
 

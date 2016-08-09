@@ -12,7 +12,7 @@
 
 @property (nonatomic, copy, readonly) NSString *remoteUri;
 
-- (id)initWithRemoteUri:(NSString *)remoteUri
+- (instancetype)initWithRemoteUri:(NSString *)remoteUri
             fromAccount:(GSAccount *)account;
 
 @end

@@ -16,7 +16,7 @@
 @property (nonatomic, readonly) float volume; ///< Returns current ringback volume.
 
 /// Creates GSRingback instance with ringback tone from the specified filename.
-+ (id)ringbackWithSoundNamed:(NSString *)filename;
++ (instancetype)ringbackWithSoundNamed:(NSString *)filename;
 
 - (BOOL)setVolume:(float)volume; ///< Sets ringback volume. This value is subject to GSConfiguration.volumeScale.
 

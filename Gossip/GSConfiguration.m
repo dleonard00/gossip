@@ -10,16 +10,16 @@
 
 @implementation GSConfiguration
 
-+ (id)defaultConfiguration {
++ (instancetype)defaultConfiguration {
     return [[GSConfiguration alloc] init];
 }
 
-+ (id)configurationWithConfiguration:(GSConfiguration *)configuration {
++ (instancetype)configurationWithConfiguration:(GSConfiguration *)configuration {
     return [configuration copy];
 }
 
 
-- (id)init {
+- (instancetype)init {
     if (!(self = [super init]))
         return nil; // init failed.
 
@@ -48,7 +48,7 @@
 }
 
 
-- (id)copyWithZone:(NSZone *)zone {
+- (instancetype)copyWithZone:(NSZone *)zone {
     GSConfiguration *replica = [[[self class] allocWithZone:zone] init];
     
     // TODO: Probably better to do via class_copyPropertyList.

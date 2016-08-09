@@ -15,7 +15,7 @@
     pjsua_codec_info _info;
 }
 
-- (id)initWithCodecInfo:(pjsua_codec_info *)codecInfo {
+- (instancetype)initWithCodecInfo:(pjsua_codec_info *)codecInfo {
     if (self = [super init]) {
         _info = *codecInfo;
     }

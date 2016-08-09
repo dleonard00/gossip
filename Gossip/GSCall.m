@@ -41,11 +41,11 @@
 }
 
 
-- (id)init {
+- (instancetype)init {
     return [self initWithAccount:nil];
 }
 
-- (id)initWithAccount:(GSAccount *)account {
+- (instancetype)initWithAccount:(GSAccount *)account {
     if (self = [super init]) {
         GSAccountConfiguration *config = account.configuration;
 

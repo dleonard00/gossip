@@ -11,6 +11,6 @@
 
 @interface GSCodecInfo (Private)
 
-- (id)initWithCodecInfo:(pjsua_codec_info *)codecInfo;
+- (instancetype)initWithCodecInfo:(pjsua_codec_info *)codecInfo;
 
 @end

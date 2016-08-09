@@ -32,7 +32,7 @@ typedef enum {
 
 @property (nonatomic, strong) GSAccountConfiguration *account;
 
-+ (id)defaultConfiguration;
-+ (id)configurationWithConfiguration:(GSConfiguration *)configuration;
++ (instancetype)defaultConfiguration;
++ (instancetype)configurationWithConfiguration:(GSConfiguration *)configuration;
 
 @end

@@ -25,7 +25,7 @@
 @property (nonatomic) BOOL enableRingback; ///< Enable automatic ringback sounds.
 @property (nonatomic, copy) NSString *ringbackFilename; ///< Filename to play as ringback sounds. Defaults to "ringtone.wav" so you can just include it in your bundle and Gossip will pick it up.
 
-+ (id)defaultConfiguration; ///< Creates a GSAccountConfiguration instance with default configuration values.
-+ (id)configurationWithConfiguration:(GSAccountConfiguration *)configuration; ///< Copy constructor.
++ (instancetype)defaultConfiguration; ///< Creates a GSAccountConfiguration instance with default configuration values.
++ (instancetype)configurationWithConfiguration:(GSAccountConfiguration *)configuration; ///< Copy constructor.
 
 @end

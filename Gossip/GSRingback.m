@@ -21,12 +21,12 @@
     pjsua_player_id _playerId;
 }
 
-+ (id)ringbackWithSoundNamed:(NSString *)filename {
++ (instancetype)ringbackWithSoundNamed:(NSString *)filename {
     return [[self alloc] initWithSoundNamed:filename];
 }
 
 
-- (id)initWithSoundNamed:(NSString *)filename {
+- (instancetype)initWithSoundNamed:(NSString *)filename {
     if (self = [super init]) {
         NSBundle *bundle = [NSBundle mainBundle];
 

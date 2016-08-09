@@ -162,7 +162,7 @@
     return pjsua_call_dial_dtmf(_callId, &pjDigits);
 }
 
-- (BOOL)holdForGSMCall
+- (BOOL)disconnectAudioForGSMCall
 {
     int capture;
     int playback;
@@ -176,7 +176,7 @@
     return (status == PJ_SUCCESS)?YES:NO;
 }
 
-- (BOOL)resumeFromGSMCall
+- (BOOL)reconnectAudioAfterGSMCall
 {
     pj_status_t status = pjsua_set_snd_dev(_captureDev, _playbackDev);
     

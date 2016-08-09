@@ -35,12 +35,12 @@ typedef enum {
 
 /// Creats a new outgoing call to the specified remoteUri.
 /** Use begin() to begin calling. */
-+ (id)outgoingCallToUri:(NSString *)remoteUri fromAccount:(GSAccount *)account;
++ (GSCall *)outgoingCallToUri:(NSString *)remoteUri fromAccount:(GSAccount *)account;
 
 /// Creates a new incoming call from the specified PJSIP call id. And associate it with the speicifed account.
 /** Do not call this method directly, implement GSAccountDelegate and listen to the
  *  GSAccountDelegate::account:didReceiveIncomingCall: message instead. */
-+ (id)incomingCallWithId:(int)callId toAccount:(GSAccount *)account;
++ (GSCall *)incomingCallWithId:(int)callId toAccount:(GSAccount *)account;
 
 /// Initialize a new call with the specified account.
 /** Do not initialize a GSCall instance directly, instead use one of the provided static methods.

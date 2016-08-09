@@ -26,14 +26,14 @@
     int _playbackDev;
 }
 
-+ (id)outgoingCallToUri:(NSString *)remoteUri fromAccount:(GSAccount *)account {
++ (GSCall *)outgoingCallToUri:(NSString *)remoteUri fromAccount:(GSAccount *)account {
     GSOutgoingCall *call = [GSOutgoingCall alloc];
     call = [call initWithRemoteUri:remoteUri fromAccount:account];
     
     return call;
 }
 
-+ (id)incomingCallWithId:(int)callId toAccount:(GSAccount *)account {
++ (GSCall *)incomingCallWithId:(int)callId toAccount:(GSAccount *)account {
     GSIncomingCall *call = [GSIncomingCall alloc];
     call = [call initWithCallId:callId toAccount:account];
 

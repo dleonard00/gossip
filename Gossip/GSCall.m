@@ -22,6 +22,8 @@
     float _volume;
     float _micVolume;
     float _volumeScale;
+    int _captureDev;
+    int _playbackDev;
 }
 
 + (id)outgoingCallToUri:(NSString *)remoteUri fromAccount:(GSAccount *)account {
@@ -160,6 +162,26 @@
     return pjsua_call_dial_dtmf(_callId, &pjDigits);
 }
 
+- (BOOL)holdForGSMCall
+{
+    int capture;
+    int playback;
+    
+    pjsua_get_snd_dev(&capture, &playback);
+    pj_status_t status = pjsua_set_no_snd_dev();
+    
+    _captureDev = capture;
+    _playbackDev = playback;
+    
+    return (status == PJ_SUCCESS)?YES:NO;
+}
+
+- (BOOL)resumeFromGSMCall
+{
+    pj_status_t status = pjsua_set_snd_dev(_captureDev, _playbackDev);
+    
+    return (status == PJ_SUCCESS)?YES:NO;
+}
 
 - (void)startRingback {
     if (!_ringback || _ringback.isPlaying)

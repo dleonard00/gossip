@@ -56,4 +56,6 @@ typedef enum {
 
 - (BOOL)sendDTMFDigits:(NSString *)digits; ///< Sends DTMF digits over the call.
 
+- (BOOL)holdForGSMCall; /// Stop the PJSIP call when a GSM call comes in
+- (BOOL)resumeFromGSMCall; /// Reestablish the PJSIP call after the GSM call ends
 @end

@@ -60,7 +60,9 @@ static pjsip_transport *the_transport;
 
     GSUserAgent *agent = [GSUserAgent sharedAgent];
     if (_accountId != PJSUA_INVALID_ID && [agent status] != GSUserAgentStateDestroyed) {
-        GSLogIfFails(pjsua_acc_del(_accountId));
+        if (pjsua_acc_is_valid(_accountId)) {
+            GSLogIfFails(pjsua_acc_del(_accountId));
+        }
         _accountId = PJSUA_INVALID_ID;
     }
 
@@ -123,9 +125,10 @@ static pjsip_transport *the_transport;
 
 - (BOOL)disconnect {
     NSAssert(!!_config, @"GSAccount not configured.");
-        
-    GSReturnNoIfFails(pjsua_acc_set_online_status(_accountId, PJ_FALSE));
-    GSReturnNoIfFails(pjsua_acc_set_registration(_accountId, PJ_FALSE));
+    if (self.status == GSAccountStatusConnected) {
+        GSReturnNoIfFails(pjsua_acc_set_online_status(_accountId, PJ_FALSE));
+        GSReturnNoIfFails(pjsua_acc_set_registration(_accountId, PJ_FALSE));
+    }
     return YES;
 }
 

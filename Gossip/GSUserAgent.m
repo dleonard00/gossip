@@ -74,7 +74,9 @@
 
 
 - (BOOL)configure:(GSConfiguration *)config {
-    GSAssert(!_config, @"Gossip: User agent is already configured.");
+//    GSAssert(!_config, @"Gossip: User agent is already configured.");
+    
+    if (_config) [self resetWithCompletion:nil];
     _config = [config copy];
     
     // create agent
@@ -138,17 +140,22 @@
     return YES;
 }
 
-- (BOOL)reset {
-    [_account disconnect];
-
-    // needs to nil account before pjsua_destroy so pjsua_acc_del succeeds.
-    _transportId = PJSUA_INVALID_ID;
-    _account = nil;
-    _config = nil;
-    NSLog(@"Destroying...");
-    GSReturnNoIfFails(pjsua_destroy());
-    [self setStatus:GSUserAgentStateDestroyed];
-    return YES;
+- (void)resetWithCompletion:(void (^)(BOOL success))block {
+    [_account disconnectWithCompletion:^(BOOL success) {
+        // needs to nil account before pjsua_destroy so pjsua_acc_del succeeds.
+        _transportId = PJSUA_INVALID_ID;
+        _account = nil;
+        _config = nil;
+        
+        NSLog(@"Destroying...");
+        pj_status_t status = pjsua_destroy();
+        if (status == PJ_SUCCESS) {
+            [self setStatus:GSUserAgentStateDestroyed];
+            block(YES);
+        } else {
+            block(NO);
+        };
+    }];
 }
 
 

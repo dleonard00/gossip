@@ -7,8 +7,11 @@
 
 #import <Foundation/Foundation.h>
 #import "GSAccountConfiguration.h"
+#import "PJSIP.h"
+
 @class GSAccount, GSCall;
 
+void NSString2PjStr(pj_str_t *p, NSString* text);
 
 /// Account Status enum.
 typedef enum {
@@ -27,7 +30,9 @@ typedef enum {
 /** Call GSCall::begin to accept incoming call or GSCall::end to deny. 
  *  This should be done in a timely fashion since we do not support timeouts for incoming call yet. */
 - (void)account:(GSAccount *)account didReceiveIncomingCall:(GSCall *)call withMessage:(NSString*)message;
-
+@optional
+/// Called when an account recieves an incoming IM message.
+- (void)account:(GSAccount *)account didReceiveIM:(NSString *)message;
 @end
 
 
@@ -36,6 +41,7 @@ typedef enum {
 
 @property (nonatomic, readonly) int accountId; ///< Account Id, automatically assigned by PJSIP.
 @property (nonatomic, readonly) GSAccountStatus status; ///< Account registration status. Supports KVO notification.
+@property (nonatomic, readonly) GSAccountConfiguration *config; ///< Account Configuration. Set with -configure: method.
 @property (nonatomic, readonly) NSDate *registrationExpiration; ///< Account registration status. Supports KVO notification.
 
 @property (nonatomic, unsafe_unretained) id<GSAccountDelegate> delegate; ///< Account activity delegate.
@@ -45,8 +51,9 @@ typedef enum {
  *  Usually this is called automatically by the GSUserAgent instance. */
 - (BOOL)configure:(GSAccountConfiguration *)configuration;
 - (BOOL)handleIPChange;
-- (BOOL)connect; ///< Connects and begin registering with the configured SIP registration server.
+- (void)connectWithCompletion:(void (^)(BOOL success))block; ///< Connects and begin registering with the configured SIP registration server.
 - (BOOL)disconnect; ///< Unregister from the SIP registration server and disconnects.
+- (void)disconnectWithCompletion:(void (^)(BOOL success))block;
 - (void)startKeepAlive;
 - (void)performKeepAlive;
 

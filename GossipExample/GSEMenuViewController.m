@@ -100,7 +100,7 @@
 
 
 - (IBAction)userDidTapConnect {
-    [_account connect];
+    [_account connectWithCompletion:nil];
 }
 
 - (IBAction)userDidTapDisconnect {
@@ -108,7 +108,7 @@
 }
 
 - (IBAction)userDidTapSwitchAccount:(id)sender {
-    [[GSUserAgent sharedAgent] reset];
+    [[GSUserAgent sharedAgent] resetWithCompletion:nil];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

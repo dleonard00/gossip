@@ -31,6 +31,7 @@ typedef enum {
 @interface GSUserAgent : NSObject
 
 @property (nonatomic, strong, readonly) GSAccount *account; ///< Default GSAccount instance with the configured SIP account registration.
+@property (nonatomic, strong, readonly) GSConfiguration *config; ///< GSUSerAgent configuration.
 @property (nonatomic, readonly) GSUserAgentState status; ///< User agent configuration state. Supports KVO notification.
 
 /// Obtains the shared user agent instance.
@@ -55,7 +56,7 @@ typedef enum {
 /** You will need to call GSUserAgent::configure() and GSUserAgent::start() again.
  *  You may use this method to resets and reconnect user agent to a different account.
  */
-- (BOOL)reset;
+- (void)resetWithCompletion:(void (^)(BOOL success))block;
 
 /// Gets an array of GSCodecInfo for codecs loaded by PJSIP.
 - (NSArray *)arrayOfAvailableCodecs;
